@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The First 90: Accelerate Your Transition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111111; /* Nike Black */
+            color: #FFFFFF; /* Nike White */
+        }
+        .nike-red { color: #FA552F; } /* Nike Red/Orange Accent */
+        .nike-grey { color: #A0A0A0; }
+        .card {
+            background-color: #1E1E1E; /* Darker Grey for cards */
+            border-radius: 0.75rem; /* rounded-xl */
+            padding: 2rem; /* p-8 */
+            margin-bottom: 2rem; /* mb-8 */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .section-title {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 800; /* font-extrabold */
+            letter-spacing: -0.025em; /* tracking-tight */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        .subsection-title {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 700; /* font-bold */
+            color: #FA552F; /* Nike Red */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        .highlight-text {
+            color: #FA552F;
+            font-weight: 700;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+            background-color: #282828;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        .stars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .star-item {
+            background-color: #282828;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid #FA552F;
+        }
+        .star-item h4 {
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+        }
+        .star-item p {
+            font-size: 0.875rem; /* text-sm */
+            color: #A0A0A0; /* Nike Grey */
+        }
+        .plan-column {
+            background-color: #282828;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+        .plan-column h4 {
+            color: #FA552F;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .plan-column ul li {
+            margin-bottom: 0.5rem;
+            color: #A0A0A0;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="py-12 text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="text-5xl md:text-6xl font-black uppercase tracking-tight">
+                THE FIRST <span class="nike-red">90</span>
+            </h1>
+            <p class="mt-4 text-xl md:text-2xl nike-grey font-light">Proven Strategies for Getting Up to Speed Faster and Smarter.</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6">
+
+        <section id="break even-point" class="card">
+            <h2 class="section-title text-center">Reach Your <span class="nike-red">BREAK EVEN POINT</span> Sooner</h2>
+            <p class="text-center nike-grey mb-6">The objective: Accelerate your transition to become a net contributor faster. Studies show these strategies can speed this up by up to 40%.</p>
+            <div class="chart-container">
+                <canvas id="breakevenChart"></canvas>
+            </div>
+            <p class="text-center text-sm nike-grey mt-4">Value Consumed vs. Value Produced over Months After Entry.</p>
+        </section>
+
+        <section id="core-principles" class="grid md:grid-cols-2 gap-8">
+            <div class="card md:col-span-2">
+                <h2 class="section-title">ACCELERATE <span class="nike-red">YOUR LEARNING</span></h2>
+                <p class="nike-grey mb-4">In onboarding conversations, always include these 3 blocks of questions to build your understanding:</p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div>
+                        <h3 class="subsection-title !text-white !text-xl">The Past?</h3>
+                        <ul class="list-disc list-inside nike-grey text-sm space-y-1">
+                            <li>How did this organization perform?</li>
+                            <li>Causes of successes & failures?</li>
+                            <li>Changes made & who led them?</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="subsection-title !text-white !text-xl">The Present?</h3>
+                        <ul class="list-disc list-inside nike-grey text-sm space-y-1">
+                            <li>Company’s vision & strategy?</li>
+                            <li>Who has influence & is trustworthy? Why?</li>
+                            <li>Key processes & how things get done?</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="subsection-title !text-white !text-xl">The Future?</h3>
+                        <ul class="list-disc list-inside nike-grey text-sm space-y-1">
+                            <li>Biggest challenges & opportunities?</li>
+                            <li>Barriers to needed changes?</li>
+                            <li>If you were me, one change you’d make (immediately) & why?</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="section-title">MATCH STRATEGY <span class="nike-red">TO SITUATION</span></h2>
+                <p class="nike-grey mb-4">No "One Size Fits All." Diagnose your situation using the STARS model:</p>
+                <div class="stars-grid">
+                    <div class="star-item"><h4>Start-Up</h4><p>Building strategy, structures, systems from scratch. Assembling capabilities.</p></div>
+                    <div class="star-item"><h4>Turnaround</h4><p>Saving a business in serious trouble. Making tough calls under pressure.</p></div>
+                    <div class="star-item"><h4>Accelerated Growth</h4><p>Managing rapid expansion. Scaling systems and integrating new talent.</p></div>
+                    <div class="star-item"><h4>Realignment</h4><p>Reenergizing a previously successful org. Convincing others change is needed.</p></div>
+                    <div class="star-item"><h4>Sustaining Success</h4><p>Preserving vitality and taking it to the next level. Playing good defense.</p></div>
+                </div>
+                <p class="text-sm nike-grey mt-4">Each situation requires a different focus (e.g., Turnarounds need quick technical learning & bold moves; Realignments need cultural/political learning & deliberate moves).</p>
+            </div>
+
+            <div class="card">
+                <h2 class="section-title">NEGOTIATE <span class="nike-red">SUCCESS</span></h2>
+                <p class="nike-grey mb-4">Have 5 key conversations with your leader to align and set expectations:</p>
+                <ol class="list-decimal list-inside nike-grey space-y-2">
+                    <li><span class="font-semibold text-white">Situational Diagnosis:</span> Do you both see the STARS situation the same way? What's their role?</li>
+                    <li><span class="font-semibold text-white">Expectations:</span> What does success look like? How will performance be measured? Understand their priorities. Underpromise, overdeliver.</li>
+                    <li><span class="font-semibold text-white">Resources:</span> What do you need (money, people, authority, backing) for your specific STARS situation?</li>
+                    <li><span class="font-semibold text-white">Style:</span> Understand your boss’s communication, learning, and decision-making style. Adapt.</li>
+                    <li><span class="font-semibold text-white">Personal Development:</span> Ask for feedback on your hard and soft skills.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 class="section-title text-center">SECURE <span class="nike-red">EARLY WINS</span></h2>
+            <p class="text-center nike-grey mb-4">"Early wins excite and energize people and build your personal credibility. Done well, they help you create value for your new organization earlier and reach the break-even point much more quickly."</p>
+            <p class="text-center nike-grey">This isn't always about shipping features. It can be mitigating risks, driving clarity, getting commitments, or defining a go-to-market plan. Preventing problems is often easier than fixing them.</p>
+        </section>
+
+        <section id="90-day-plan-blueprint" class="card">
+            <h2 class="section-title text-center">YOUR <span class="nike-red">90-DAY BLUEPRINT</span></h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="plan-column">
+                    <h4>30 DAYS</h4>
+                    <p class="font-semibold text-white mb-2">Focus: Learn & Diagnose</p>
+                    <ul class="text-sm">
+                        <li>Diagnosis of the Situation (STARS)</li>
+                        <li>Identification of Key Priorities</li>
+                        <li>Plan for Next 30 Days</li>
+                        <li>Manager Review: Situation, Expectations, Buy-in</li>
+                    </ul>
+                </div>
+                <div class="plan-column">
+                    <h4>60 DAYS</h4>
+                    <p class="font-semibold text-white mb-2">Focus: Refine & Align</p>
+                    <ul class="text-sm">
+                        <li>Identification of Necessary Resources</li>
+                        <li>Presentation of Early Assessments</li>
+                        <li>Plan for Next 30 Days</li>
+                        <li>Manager Review: Assess Progress, Discuss Next Plan</li>
+                    </ul>
+                </div>
+                <div class="plan-column">
+                    <h4>90 DAYS</h4>
+                    <p class="font-semibold text-white mb-2">Focus: Deliver & Build Momentum</p>
+                    <ul class="text-sm">
+                        <li>Secure Early Wins</li>
+                        <li>Build Credibility</li>
+                        <li>Manager Review: Review Results with Manager</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="manage-yourself" class="card">
+            <h2 class="section-title text-center">MANAGE <span class="nike-red">YOURSELF</span></h2>
+            <p class="text-center nike-grey mb-6">Sustain high performance by focusing on the 3 Pillars of Self-Management:</p>
+            <div class="grid md:grid-cols-3 gap-6 text-center">
+                <div>
+                    <div class="text-5xl mb-2">🚀</div>
+                    <h3 class="subsection-title !text-white !text-xl">Adopt 90-Day Strategies</h3>
+                    <p class="nike-grey text-sm">Use frameworks (like STARS) for WHAT to do.</p>
+                </div>
+                <div>
+                    <div class="text-5xl mb-2">⏱️</div>
+                    <h3 class="subsection-title !text-white !text-xl">Develop Personal Discipline</h3>
+                    <p class="nike-grey text-sm">Focus on PACING your execution and avoiding burnout.</p>
+                </div>
+                <div>
+                    <div class="text-5xl mb-2">🤝</div>
+                    <h3 class="subsection-title !text-white !text-xl">Build Your Support System</h3>
+                    <p class="nike-grey text-sm">Cultivate your HOME base + professional advisors (technical, cultural, political).</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-10 mt-10 border-t border-neutral-700">
+        <p class="text-2xl font-black nike-red">ACCELERATE.</p>
+        <p class="nike-grey text-sm mt-2">Inspired by "The First 90 Days" by Michael D. Watkins.</p>
+    </footer>
+
+    <script>
+        const ctxBreakeven = document.getElementById('breakevenChart').getContext('2d');
+        const breakevenChart = new Chart(ctxBreakeven, {
+            type: 'line',
+            data: {
+                labels: ['Entry', '1', '2', '3', '4', '5', '6', '7'], // Months
+                datasets: [{
+                    label: 'Net Value Contribution',
+                    data: [-10, -12, -10, -5, 2, 8, 15, 25], // Example data showing initial consumption then production
+                    borderColor: '#FA552F', // Nike Red
+                    backgroundColor: 'rgba(250, 85, 47, 0.2)',
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#FFFFFF',
+                    pointBorderColor: '#FA552F',
+                    pointHoverBackgroundColor: '#FA552F',
+                    pointHoverBorderColor: '#FFFFFF'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Value',
+                            color: '#A0A0A0'
+                        },
+                        grid: {
+                            color: 'rgba(160, 160, 160, 0.2)',
+                            borderColor: 'rgba(160, 160, 160, 0.2)'
+                        },
+                        ticks: {
+                            color: '#A0A0A0',
+                            callback: function(value, index, values) {
+                                if (value === 0) return 'Breakeven';
+                                return (value > 0 ? '+' : '') + value;
+                            }
+                        },
+                        zeroLine: {
+                            borderColor: '#A0A0A0',
+                            borderDash: [5, 5]
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Months After Entry',
+                            color: '#A0A0A0'
+                        },
+                        grid: {
+                            display: false,
+                            borderColor: 'rgba(160, 160, 160, 0.2)'
+                        },
+                        ticks: {
+                            color: '#A0A0A0'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#111111',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#A0A0A0',
+                        borderColor: '#FA552F',
+                        borderWidth: 1
+                    }
+                },
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+            }
+        });
+    </script>
+
+</body>
+</html>
